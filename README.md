@@ -63,10 +63,60 @@ pip install -r requirements.txt
 ```bash
 # Terminal 1 - Servidor
 python servidor.py
+```
+
+Este archivo implementa un servidor TCP básico en Python utilizando el módulo estándar socket. El servidor escucha conexiones entrantes en la dirección IP local (127.0.0.1) y el puerto 65432. Una vez que un cliente se conecta, el servidor recibe mensajes, los imprime y responde confirmando la recepción.
+
+Descripción de las secciones principales
+1. Configuración del servidor
+HOST: IP donde el servidor escuchará (localhost).
+PORT: Puerto TCP donde el servidor aceptará conexiones.
+2. Creación y configuración del socket
+Se crea un socket TCP (SOCK_STREAM) usando IPv4 (AF_INET).
+El socket se vincula a la IP y puerto definidos.
+El servidor se pone en modo escucha, esperando conexiones entrantes.
+3. Aceptación de conexiones y comunicación 
+El servidor acepta una conexión entrante.
+Entra en un bucle donde:
+Recibe datos del cliente.
+Si no hay datos, termina la conexión.
+Decodifica y muestra el mensaje recibido.
+Envía una respuesta de confirmación al cliente.
+Funcionamiento general
+El servidor inicia y espera una conexión.
+Cuando un cliente se conecta, el servidor recibe mensajes y responde.
+El ciclo continúa hasta que el cliente cierra la conexión.
+Uso
+Ejecuta este script para iniciar el servidor.
+Conéctate desde un cliente TCP (puede ser otro script o una herramienta como netcat).
+Envía mensajes y observa las respuestas del servidor.```
+
 
 # Terminal 2 - Cliente
 python cliente.py
 ```
+
+Este archivo implementa un cliente TCP en Python utilizando el módulo estándar socket. El cliente se conecta a un servidor en la dirección IP local (127.0.0.1) y el puerto 65432, envía un mensaje y espera una respuesta.
+
+Descripción de las secciones principales
+1. Configuración del cliente
+HOST: IP del servidor al que se conectará el cliente (localhost).
+PORT: Puerto TCP del servidor.
+2. Creación y conexión del socket
+Se crea un socket TCP (SOCK_STREAM) usando IPv4 (AF_INET).
+El cliente se conecta al servidor usando la IP y el puerto definidos.
+3. Envío y recepción de mensajes
+El cliente envía un mensaje codificado en UTF-8 al servidor.
+Espera y recibe la respuesta del servidor.
+Decodifica la respuesta y la muestra por pantalla.
+Funcionamiento general
+El cliente se conecta al servidor.
+Envía un mensaje de saludo.
+Recibe y muestra la respuesta del servidor.
+La conexión se cierra automáticamente al salir del bloque with.
+Uso
+Asegúrate de que el servidor esté en ejecución.
+Ejecuta este script para conectar el cliente al servidor, enviar un mensaje y recibir la respuesta.```
 
 ### 2. Servidor Echo
 
