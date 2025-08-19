@@ -63,9 +63,9 @@ pip install -r requirements.txt
 ```bash
 # Terminal 1 - Servidor
 python servidor.py
-```
 
-Este archivo implementa un servidor TCP básico en Python utilizando el módulo estándar socket. El servidor escucha conexiones entrantes en la dirección IP local (127.0.0.1) y el puerto 65432. Una vez que un cliente se conecta, el servidor recibe mensajes, los imprime y responde confirmando la recepción.
+
+ Este archivo implementa un servidor TCP básico en Python utilizando el módulo estándar socket. El servidor escucha conexiones entrantes en la dirección IP local (127.0.0.1) y el puerto 65432. Una vez que un cliente se conecta, el servidor recibe mensajes, los imprime y responde confirmando la recepción.
 
 Descripción de las secciones principales
 1. Configuración del servidor
@@ -89,7 +89,7 @@ El ciclo continúa hasta que el cliente cierra la conexión.
 Uso
 Ejecuta este script para iniciar el servidor.
 Conéctate desde un cliente TCP (puede ser otro script o una herramienta como netcat).
-Envía mensajes y observa las respuestas del servidor.```
+Envía mensajes y observa las respuestas del servidor. 
 
 
 # Terminal 2 - Cliente
@@ -116,7 +116,7 @@ Recibe y muestra la respuesta del servidor.
 La conexión se cierra automáticamente al salir del bloque with.
 Uso
 Asegúrate de que el servidor esté en ejecución.
-Ejecuta este script para conectar el cliente al servidor, enviar un mensaje y recibir la respuesta.```
+Ejecuta este script para conectar el cliente al servidor, enviar un mensaje y recibir la respuesta.
 
 ### 2. Servidor Echo
 
@@ -132,10 +132,62 @@ Ejecuta este script para conectar el cliente al servidor, enviar un mensaje y re
 ```bash
 # Terminal 1 - Servidor
 python servidor.py
+Este archivo implementa un servidor Echo TCP en Python usando el módulo estándar socket. El servidor escucha conexiones en la dirección IP local (127.0.0.1) y el puerto 65432. Por cada cliente conectado, el servidor recibe mensajes y responde enviando exactamente los mismos datos recibidos (funcionalidad "echo").
+
+Descripción de las secciones principales
+1. Configuración del servidor
+HOST: IP donde el servidor escuchará (localhost).
+PORT: Puerto TCP donde el servidor aceptará conexiones.
+2. Función principal del servidor Echo
+Se crea un socket TCP usando IPv4.
+El socket se vincula a la IP y puerto definidos.
+El servidor se pone en modo escucha para aceptar conexiones entrantes.
+3. Manejo de conexiones y funcionalidad Echo
+El servidor acepta conexiones de clientes en un bucle infinito.
+Por cada cliente:
+Recibe datos.
+Si no hay datos, el cliente se desconectó.
+Si hay datos, los reenvía tal cual al cliente (echo).
+4. Ejecución del servidor
+Permite ejecutar el servidor directamente desde la línea de comandos.
+Funcionamiento general
+El servidor inicia y espera conexiones.
+Cuando un cliente se conecta, el servidor recibe mensajes y responde con los mismos datos.
+El ciclo continúa hasta que el cliente se desconecta.
+Uso
+Ejecuta este script para iniciar el servidor Echo.
+Conéctate desde un cliente TCP (otro script o herramienta como netcat).
+Envía mensajes y observa que el servidor responde con el mismo contenido.
 
 # Terminal 2 - Cliente
 python cliente.py
 ```
+Este archivo implementa un cliente TCP Echo en Python usando el módulo estándar socket. El cliente se conecta a un servidor Echo en la dirección IP local (127.0.0.1) y el puerto 65432. Permite al usuario enviar mensajes al servidor y muestra la respuesta recibida (que debe ser el mismo mensaje enviado).
+
+Descripción de las secciones principales
+1. Configuración del servidor
+HOST: IP del servidor al que se conectará el cliente (localhost).
+PORT: Puerto TCP del servidor.
+2. Función principal del cliente Echo
+Se crea un socket TCP usando IPv4.
+El cliente se conecta al servidor usando la IP y el puerto definidos.
+3. Envío y recepción de mensajes
+El usuario introduce un mensaje por teclado.
+Si el mensaje es 'salir', el cliente termina.
+El mensaje se envía al servidor codificado en UTF-8.
+El cliente recibe la respuesta del servidor y la muestra por pantalla.
+4. Ejecución del cliente
+Permite ejecutar el cliente directamente desde la línea de comandos.
+Funcionamiento general
+El cliente se conecta al servidor Echo.
+El usuario puede enviar mensajes y recibe como respuesta el mismo mensaje enviado.
+El ciclo continúa hasta que el usuario escribe 'salir'.
+Uso
+Asegúrate de que el servidor Echo esté en ejecución.
+Ejecuta este script para iniciar el cliente.
+Escribe mensajes para enviarlos al servidor y ver la respuesta.
+Escribe 'salir' para terminar la conexión.
+
 
 ### 3. Chat Multiusuario
 
