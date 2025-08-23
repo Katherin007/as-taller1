@@ -16,8 +16,8 @@ def recibir_mensajes(cliente_socket):
             else:
                 print("Se ha perdido la conexión con el servidor.")
                 cliente_socket.close()
-                break
-        except:
+                break 
+        except():
             print("Ha ocurrido un error al recibir mensajes.")
             cliente_socket.close()
             break

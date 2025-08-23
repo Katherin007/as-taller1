@@ -204,9 +204,70 @@ Escribe 'salir' para terminar la conexión.
 # Terminal 1 - Servidor
 python servidor.py
 
+Este archivo implementa un servidor de chat multiusuario en Python usando sockets y multithreading. Permite que varios clientes se conecten simultáneamente y que los mensajes enviados por un cliente sean retransmitidos a todos los demás clientes conectados.
+
+Componentes principales
+1. Configuración del servidor
+HOST: IP donde el servidor escuchará (localhost).
+PORT: Puerto TCP donde el servidor aceptará conexiones.
+2. Lista de clientes conectados
+Lista global que almacena los sockets de todos los clientes actualmente conectados.
+3. Función manejar_cliente
+Atiende a un cliente específico en un hilo independiente.
+Recibe mensajes del cliente y los retransmite a los demás.
+Si el cliente se desconecta o ocurre un error, lo elimina de la lista de clientes conectados.
+4. Función retransmitir_mensaje
+Envía el mensaje recibido a todos los clientes conectados excepto al remitente.
+Si ocurre un error al enviar, elimina el cliente problemático.
+5. Función eliminar_cliente
+Elimina el socket del cliente de la lista global y muestra un mensaje en consola.
+6. Función iniciar_servidor_chat
+Crea el socket del servidor, lo vincula y lo pone en escucha.
+Acepta conexiones entrantes en un bucle infinito.
+Por cada nuevo cliente, crea un hilo para manejar su comunicación.
+7. Ejecución principal
+Permite ejecutar el servidor directamente desde la línea de comandos.
+Funcionamiento general
+El servidor inicia y espera conexiones de clientes.
+Cada cliente conectado puede enviar mensajes.
+Los mensajes se retransmiten a todos los demás clientes conectados.
+Si un cliente se desconecta, se elimina de la lista de clientes activos.
+Uso
+Ejecuta este script para iniciar el servidor de chat.
+Conéctate desde varios clientes (usando el cliente correspondiente).
+Los mensajes enviados por un cliente serán recibidos por todos los demás.
+
+
 # Terminales adicionales - Clientes
 python cliente.py
 ```
+Este archivo implementa un cliente TCP Echo en Python usando el módulo estándar socket. El cliente se conecta a un servidor Echo en la dirección IP local (127.0.0.1) y el puerto 65432. Permite al usuario enviar mensajes al servidor y muestra la respuesta recibida (que debe ser el mismo mensaje enviado).
+
+Descripción de las secciones principales
+1. Configuración del servidor
+HOST: IP del servidor al que se conectará el cliente (localhost).
+PORT: Puerto TCP del servidor.
+2. Función principal del cliente Echo
+Se crea un socket TCP usando IPv4.
+El cliente se conecta al servidor usando la IP y el puerto definidos.
+3. Envío y recepción de mensajes
+El usuario introduce un mensaje por teclado.
+Si el mensaje es 'salir', el cliente termina.
+El mensaje se envía al servidor codificado en UTF-8.
+El cliente recibe la respuesta del servidor y la muestra por pantalla.
+4. Ejecución del cliente
+Permite ejecutar el cliente directamente desde la línea de comandos.
+
+Funcionamiento general
+El cliente se conecta al servidor Echo.
+El usuario puede enviar mensajes y recibe como respuesta el mismo mensaje enviado.
+El ciclo continúa hasta que el usuario escribe 'salir'.
+
+Uso
+Asegúrate de que el servidor Echo esté en ejecución.
+Ejecuta este script para iniciar el cliente.
+Escribe mensajes para enviarlos al servidor y ver la respuesta.
+Escribe 'salir' para terminar la conexión.
 
 ### 4. Servidor HTTP Básico
 

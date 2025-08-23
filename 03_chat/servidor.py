@@ -21,7 +21,7 @@ def manejar_cliente(cliente_socket):
                 # El cliente se desconectó
                 eliminar_cliente(cliente_socket)
                 break
-        except:
+        except():
             eliminar_cliente(cliente_socket)
             break
 
@@ -31,7 +31,7 @@ def retransmitir_mensaje(mensaje, remitente):
         if socket_cliente != remitente:
             try:
                 socket_cliente.send(mensaje.encode('utf-8'))
-            except:
+            except():
                 socket_cliente.close()
                 eliminar_cliente(socket_cliente)
 
