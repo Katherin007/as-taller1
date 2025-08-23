@@ -287,6 +287,36 @@ python server.py
 # Acceder desde navegador:
 # http://localhost:8080
 ```
+Este archivo implementa un servidor HTTP básico en Python utilizando sockets. El servidor escucha en la dirección IP local (127.0.0.1) y el puerto 8080, responde a las solicitudes HTTP entrantes y envía una página HTML simple como respuesta.
+
+Componentes principales
+1. Configuración del servidor
+HOST: IP donde el servidor escuchará (localhost).
+PORT: Puerto TCP donde el servidor aceptará conexiones HTTP.
+2. Función generar_respuesta_http
+Construye una respuesta HTTP completa, incluyendo cabeceras y el cuerpo HTML.
+Define el código de estado, tipo de contenido, longitud y cierre de conexión.
+3. Función iniciar_servidor_http
+Crea el socket del servidor, lo vincula y lo pone en escucha.
+Acepta conexiones entrantes en un bucle infinito.
+Por cada conexión:
+Recibe la petición HTTP del cliente.
+Imprime la primera línea de la petición (por ejemplo, GET / HTTP/1.1).
+Construye una página HTML simple.
+Genera y envía la respuesta HTTP completa al cliente.
+Cierra la conexión.
+4. Ejecución principal
+Permite ejecutar el servidor directamente desde la línea de comandos.
+
+Funcionamiento general
+El servidor inicia y espera conexiones HTTP.
+Cuando un navegador o cliente realiza una petición, el servidor responde con una página HTML.
+La conexión se cierra después de enviar la respuesta.
+
+Uso
+Ejecuta este script para iniciar el servidor HTTP.
+Abre un navegador y accede a http://127.0.0.1:8080.
+Verás una página web generada por el servidor Python.
 
 ### 5. Proyecto del Estudiante
 
