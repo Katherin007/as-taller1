@@ -332,10 +332,67 @@ Verás una página web generada por el servidor Python.
 ```bash
 # Terminal 1 - Servidor
 python servidor.py
+Este archivo implementa un servidor de chat multiusuario en Python utilizando sockets y multithreading. Permite que varios clientes se conecten simultáneamente y que los mensajes enviados por un cliente sean retransmitidos a todos los demás clientes conectados.
+
+Componentes principales
+1. Configuración del servidor
+HOST: IP donde el servidor escuchará (localhost).
+PORT: Puerto TCP donde el servidor aceptará conexiones.
+2. Lista de clientes conectados
+Lista global que almacena los sockets de todos los clientes actualmente conectados.
+3. Función manejar_cliente
+Atiende a un cliente específico en un hilo independiente.
+Recibe mensajes del cliente y los retransmite a los demás clientes conectados.
+Si el cliente se desconecta o ocurre un error, lo elimina de la lista de clientes conectados y cierra la conexión.
+4. Función iniciar_servidor
+Crea el socket del servidor, lo vincula y lo pone en escucha.
+Acepta conexiones entrantes en un bucle infinito.
+Por cada nuevo cliente, crea un hilo para manejar su comunicación.
+5. Ejecución principal
+Permite ejecutar el servidor directamente desde la línea de comandos.
+Funcionamiento general
+El servidor inicia y espera conexiones de clientes.
+Cada cliente conectado puede enviar mensajes.
+Los mensajes se retransmiten a todos los demás clientes conectados.
+Si un cliente se desconecta, se elimina de la lista de clientes activos y se cierra su socket.
+Uso
+Ejecuta este script para iniciar el servidor de chat.
+Conéctate desde varios clientes (usando el cliente correspondiente).
+Los mensajes enviados por un cliente serán recibidos por todos los demás.
 
 # Terminal 2 - Cliente
 python cliente.py
 ```
+Este archivo implementa un cliente de chat multiusuario en Python utilizando sockets y multithreading. Permite conectarse a un servidor de chat, enviar mensajes y recibir mensajes de otros usuarios en tiempo real.
+
+Componentes principales
+1. Configuración del cliente
+HOST: IP del servidor al que se conectará el cliente (localhost).
+PORT: Puerto TCP del servidor.
+2. Función recibir_mensajes
+Se ejecuta en un hilo independiente.
+Recibe mensajes del servidor y los muestra por pantalla.
+Si el servidor se desconecta o ocurre un error, cierra el socket y termina el hilo.
+3. Función iniciar_cliente
+Crea el socket del cliente y se conecta al servidor.
+Inicia un hilo para recibir mensajes del servidor.
+Permite al usuario enviar mensajes desde la consola.
+Si el usuario escribe 'salir', termina la conexión.
+4. Ejecución principal
+Permite ejecutar el cliente directamente desde la línea de comandos.
+
+Funcionamiento general
+El cliente se conecta al servidor de chat.
+El usuario puede escribir mensajes que serán enviados al servidor.
+Los mensajes de otros usuarios se reciben y se muestran automáticamente.
+Si el usuario escribe 'salir' o el servidor se desconecta, la conexión se cierra.
+
+Uso
+Asegúrate de que el servidor de chat esté en ejecución.
+Ejecuta este script para iniciar el cliente.
+Escribe mensajes para enviarlos al chat.
+Escribe 'salir' para terminar la conexión.
+
 
 ## Conceptos
 
